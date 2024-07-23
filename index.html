@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textbox Monitor</title>
+</head>
+<body>
+    <h1>Textbox Monitor</h1>
+    <textarea id="queryTextbox" rows="10" cols="50"></textarea>
+
+    <script>
+        // Function to write a query string to the textbox
+        function writeQuery(query) {
+            document.getElementById('queryTextbox').value = query;
+        }
+
+        // Function to monitor the textbox for changes
+        function monitorTextbox() {
+            let previousValue = document.getElementById('queryTextbox').value;
+
+            setInterval(() => {
+                let currentValue = document.getElementById('queryTextbox').value;
+                if (currentValue !== previousValue) {
+                    previousValue = currentValue;
+                    elsapy(currentValue);
+                }
+            }, 10000); // Check every 10 seconds
+        }
+
+        // Placeholder function to be triggered when a change is detected
+        function elsapy(query) {
+            console.log('Detected change, executing elsapy with query:', query);
+            // Add your custom functionality here
+        }
+
+        // Initialize the monitor function
+        monitorTextbox();
+    </script>
+</body>
+</html>
